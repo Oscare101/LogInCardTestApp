@@ -39,7 +39,7 @@ export default function LogInScreen({navigation}: any) {
       storage.set('password', password);
       navigation.reset({
         index: 0,
-        routes: [{name: 'MainTabNavigation'}],
+        routes: [{name: 'MainTopNavigation'}],
       });
     } else {
       setErrorEmail(!emailCheck ? text.emailError : '');

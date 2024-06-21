@@ -7,5 +7,5 @@ export interface ThemeColor {
 }
 
 export interface IconName {
-  value: 'password' | 'email' | 'eye' | 'eye-closed';
+  value: 'password' | 'email' | 'eye' | 'eye-closed' | 'home' | 'profile';
 }

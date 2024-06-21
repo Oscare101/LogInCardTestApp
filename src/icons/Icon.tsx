@@ -4,6 +4,8 @@ import {IconName} from '../constants/interfaces';
 import PasswordIcon from './PasswordIcon';
 import EyeIcon from './EyeIcon';
 import EyeClosedIcon from './EyeClosedIcon';
+import HomeIcon from './HomeIcon';
+import ProfileIcon from './ProfileIcon';
 
 export default function Icon(props: {
   name: IconName['value'];
@@ -35,6 +37,20 @@ export default function Icon(props: {
     'eye-closed': (
       <SvgXml
         xml={EyeClosedIcon(props.color)}
+        width={props.size}
+        height={props.size}
+      />
+    ),
+    home: (
+      <SvgXml
+        xml={HomeIcon(props.color)}
+        width={props.size}
+        height={props.size}
+      />
+    ),
+    profile: (
+      <SvgXml
+        xml={ProfileIcon(props.color)}
         width={props.size}
         height={props.size}
       />
