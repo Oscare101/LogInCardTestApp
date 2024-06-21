@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     borderRadius: width * 0.03,
     height: width * 0.12,
     alignSelf: 'center',
-    marginBottom: width * 0.03,
+    marginVertical: width * 0.015,
   },
   iconBlock: {
     aspectRatio: 1,
