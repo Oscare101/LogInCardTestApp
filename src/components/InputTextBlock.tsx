@@ -1,7 +1,6 @@
 import {
   Dimensions,
   StyleSheet,
-  Text,
   TextInput,
   TouchableOpacity,
   View,
@@ -9,6 +8,7 @@ import {
 import {useState} from 'react';
 import {ThemeColor} from '../constants/interfaces';
 import colors from '../constants/colors';
+import Icon from '../icons/Icon';
 
 const width = Dimensions.get('screen').width;
 
@@ -26,6 +26,14 @@ export default function InputTextBlock(props: InputTextBlockProps) {
   return (
     <View
       style={[styles.inputBlock, {backgroundColor: colors[props.theme].card}]}>
+      <View style={styles.iconBlock}>
+        <Icon
+          name={props.type}
+          size={width * 0.05}
+          color={colors[props.theme].main}
+        />
+      </View>
+
       <TextInput
         value={props.value}
         onChangeText={(value: string) => props.setValue(value)}
@@ -42,8 +50,12 @@ export default function InputTextBlock(props: InputTextBlockProps) {
         <TouchableOpacity
           activeOpacity={0.8}
           onPress={() => setHidden(!hidden)}
-          style={styles.button}>
-          <Text>-</Text>
+          style={styles.iconBlock}>
+          <Icon
+            name={hidden ? 'eye-closed' : 'eye'}
+            size={width * 0.05}
+            color={colors[props.theme].main}
+          />
         </TouchableOpacity>
       ) : (
         <></>
@@ -59,20 +71,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     borderRadius: width * 0.03,
-    paddingHorizontal: width * 0.03,
     height: width * 0.12,
     alignSelf: 'center',
     marginBottom: width * 0.03,
   },
+  iconBlock: {
+    aspectRatio: 1,
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   input: {
     fontSize: width * 0.05,
     flex: 1,
-  },
-  button: {
-    height: width * 0.08,
-    aspectRatio: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   title: {
     fontSize: width * 0.05,
