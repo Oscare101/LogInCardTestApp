@@ -1,14 +1,11 @@
 import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {memo} from 'react';
 import {ThemeColor, UserData} from '../constants/interfaces';
 import colors from '../constants/colors';
 
 const width = Dimensions.get('screen').width;
 
-export default function ProfileCard(props: {
-  user: UserData;
-  theme: ThemeColor['value'];
-}) {
+function ProfileCard(props: {user: UserData; theme: ThemeColor['value']}) {
   return (
     <View style={[styles.card, {backgroundColor: colors[props.theme].card}]}>
       <Image
@@ -40,7 +37,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
+    marginBottom: width * 0.03,
   },
   nameBlock: {flexDirection: 'column', marginLeft: width * 0.03},
   title: {fontSize: width * 0.04},
 });
+
+export default memo(ProfileCard);

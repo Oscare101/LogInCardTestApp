@@ -4,6 +4,7 @@ import colors from '../constants/colors';
 import {MMKV} from 'react-native-mmkv';
 import {useDispatch} from 'react-redux';
 import {updateTheme} from '../redux/theme';
+import {Theme} from '../constants/interfaces';
 
 export const storage = new MMKV();
 const width = Dimensions.get('screen').width;
@@ -13,15 +14,10 @@ export default function LaunchScreen({navigation}: any) {
 
   function GetUserStorage() {
     const themeStorage = storage.getString('theme');
-    if (
-      themeStorage &&
-      themeStorage.length &&
-      themeStorage === ('system' || 'light' || 'dark')
-    ) {
-      dispatch(updateTheme(themeStorage));
+    if (themeStorage && themeStorage.length) {
+      dispatch(updateTheme(themeStorage as Theme['value']));
     } else {
       dispatch(updateTheme('system'));
-      storage.set('theme', 'system');
     }
 
     const userPassword = storage.getString('password');

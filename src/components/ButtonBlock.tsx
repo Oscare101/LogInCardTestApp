@@ -1,5 +1,5 @@
 import {Dimensions, StyleSheet, Text, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, {memo} from 'react';
 import {ThemeColor} from '../constants/interfaces';
 import colors from '../constants/colors';
 
@@ -12,7 +12,7 @@ interface ButtonBlockProps {
   titleStyle?: any;
 }
 
-export default function ButtonBlock(props: ButtonBlockProps) {
+function ButtonBlock(props: ButtonBlockProps) {
   return (
     <TouchableOpacity
       activeOpacity={0.8}
@@ -34,3 +34,5 @@ const styles = StyleSheet.create({
   },
   title: {fontSize: width * 0.05},
 });
+
+export default memo(ButtonBlock);
