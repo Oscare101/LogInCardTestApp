@@ -3,7 +3,7 @@ import {Theme} from '../constants/interfaces';
 
 const themeSlice = createSlice({
   name: 'theme',
-  initialState: 'system', // dark light
+  initialState: 'system' as Theme['value'], // system dark light
   reducers: {
     updateTheme: (state, action: PayloadAction<Theme['value']>) => {
       return action.payload;
