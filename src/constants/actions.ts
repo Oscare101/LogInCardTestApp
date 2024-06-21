@@ -1,8 +1,11 @@
-export default async function GetImages() {
+export default async function GetImages(page: number) {
   try {
-    const response = await fetch('https://picsum.photos/v2/list', {
-      method: 'GET',
-    });
+    const response = await fetch(
+      `https://picsum.photos/v2/list/?page=${page}`,
+      {
+        method: 'GET',
+      },
+    );
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }

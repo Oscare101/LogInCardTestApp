@@ -1,15 +1,12 @@
 import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {memo} from 'react';
 import {ImageData, ThemeColor} from '../constants/interfaces';
 import {BlurView} from '@react-native-community/blur';
 import colors from '../constants/colors';
 
 const width = Dimensions.get('screen').width;
 
-export default function RenderFeedItem(props: {
-  item: ImageData;
-  theme: ThemeColor['value'];
-}) {
+function RenderFeedItem(props: {item: ImageData; theme: ThemeColor['value']}) {
   return (
     <View style={styles.block}>
       <Image
@@ -52,3 +49,5 @@ const styles = StyleSheet.create({
   },
   title: {},
 });
+
+export default memo(RenderFeedItem);

@@ -1,4 +1,10 @@
-import {FlatList, SafeAreaView, StyleSheet, useColorScheme} from 'react-native';
+import {
+  ActivityIndicator,
+  FlatList,
+  SafeAreaView,
+  StyleSheet,
+  useColorScheme,
+} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {RootState} from '../redux';
 import {useSelector} from 'react-redux';
@@ -15,15 +21,17 @@ export default function FeedsScreen() {
 
   const [images, setImages] = useState<ImageData[]>([]);
 
+  const fetchImages = async () => {
+    const page = 1 + images.length / 30; // 30 images per page
+    try {
+      const response = await GetImages(page);
+      setImages(images.concat(response));
+    } catch (error) {
+      console.error('Error fetching images:', error);
+    }
+  };
+
   useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        const response = await GetImages();
-        setImages(response);
-      } catch (error) {
-        console.error('Error fetching images:', error);
-      }
-    };
     fetchImages();
   }, []);
 
@@ -36,6 +44,10 @@ export default function FeedsScreen() {
           <RenderFeedItem item={item} theme={themeColor} />
         )}
         showsVerticalScrollIndicator={false}
+        onEndReached={() => {
+          fetchImages();
+        }}
+        ListFooterComponent={() => <ActivityIndicator size={'large'} />}
       />
     </SafeAreaView>
   );
