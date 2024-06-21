@@ -1,12 +1,6 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import 'react-native-gesture-handler';
+import AppComponent from './src/components/AppComponent';
 
 export default function App() {
-  return (
-    <View>
-      <Text>App</Text>
-    </View>
-  );
+  return <AppComponent />;
 }
-
-const styles = StyleSheet.create({});
