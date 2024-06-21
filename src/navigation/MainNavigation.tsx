@@ -4,6 +4,7 @@ import {
   CardStyleInterpolators,
 } from '@react-navigation/stack';
 import LaunchScreen from '../screens/LaunchScreen';
+import LogInScreen from '../screens/LogInScreen';
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,13 @@ export default function MainNavigation() {
         }}
         name="LaunchScreen"
         component={LaunchScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerShown: false,
+        }}
+        name="LogInScreen"
+        component={LogInScreen}
       />
     </Stack.Navigator>
   );
