@@ -11,6 +11,7 @@ import {useSelector} from 'react-redux';
 import {RootState} from '../redux';
 import colors from '../constants/colors';
 import InputTextBlock from '../components/InputTextBlock';
+import ButtonBlock from '../components/ButtonBlock';
 
 export default function LogInScreen({navigation}: any) {
   const systemTheme: ThemeColor['value'] = useColorScheme() ?? 'light';
@@ -24,7 +25,6 @@ export default function LogInScreen({navigation}: any) {
   return (
     <SafeAreaView
       style={[styles.container, {backgroundColor: colors[themeColor].bg}]}>
-      <Text>LogInScreen</Text>
       <InputTextBlock
         value={email}
         setValue={(newValue: string) => setEmail(newValue)}
@@ -39,8 +39,11 @@ export default function LogInScreen({navigation}: any) {
         type="password"
         placeHolder="password"
       />
+      <ButtonBlock title="Log In" action={() => {}} theme={themeColor} />
     </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({container: {}});
+const styles = StyleSheet.create({
+  container: {flex: 1, alignItems: 'center', justifyContent: 'center'},
+});
