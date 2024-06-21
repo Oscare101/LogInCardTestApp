@@ -1,12 +1,4 @@
-import {
-  FlatList,
-  Image,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-  useColorScheme,
-} from 'react-native';
+import {FlatList, SafeAreaView, StyleSheet, useColorScheme} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {RootState} from '../redux';
 import {useSelector} from 'react-redux';

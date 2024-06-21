@@ -1,10 +1,4 @@
-import {
-  Dimensions,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  useColorScheme,
-} from 'react-native';
+import {SafeAreaView, StyleSheet, useColorScheme} from 'react-native';
 import React, {useState} from 'react';
 import {Theme, ThemeColor} from '../constants/interfaces';
 import {useSelector} from 'react-redux';
