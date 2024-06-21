@@ -18,3 +18,9 @@ export interface ImageData {
   url: string;
   download_url: string;
 }
+
+export interface UserData {
+  name: string;
+  imageUrl: string;
+  email: string;
+}

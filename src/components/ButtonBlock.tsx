@@ -1,10 +1,4 @@
-import {
-  Dimensions,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Dimensions, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {ThemeColor} from '../constants/interfaces';
 import colors from '../constants/colors';
@@ -15,6 +9,7 @@ interface ButtonBlockProps {
   title: string;
   action: any;
   theme: ThemeColor['value'];
+  titleStyle?: any;
 }
 
 export default function ButtonBlock(props: ButtonBlockProps) {
@@ -23,7 +18,7 @@ export default function ButtonBlock(props: ButtonBlockProps) {
       activeOpacity={0.8}
       onPress={props.action}
       style={[styles.button, {backgroundColor: colors[props.theme].card}]}>
-      <Text style={styles.title}>{props.title}</Text>
+      <Text style={[styles.title, props.titleStyle]}>{props.title}</Text>
     </TouchableOpacity>
   );
 }

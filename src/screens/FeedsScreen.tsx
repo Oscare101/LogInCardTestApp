@@ -13,6 +13,7 @@ import {useSelector} from 'react-redux';
 import {ImageData, Theme, ThemeColor} from '../constants/interfaces';
 import GetImages from '../constants/actions';
 import RenderFeedItem from '../components/RenderFeedItem';
+import colors from '../constants/colors';
 
 export default function FeedsScreen() {
   const systemTheme: ThemeColor['value'] = useColorScheme() ?? 'light';
@@ -35,7 +36,8 @@ export default function FeedsScreen() {
   }, []);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView
+      style={[styles.container, {backgroundColor: colors[themeColor].bg}]}>
       <FlatList
         data={images}
         renderItem={({item}) => (
