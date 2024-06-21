@@ -27,7 +27,10 @@ export default function LaunchScreen({navigation}: any) {
     const userPassword = storage.getString('password');
     const userEmail = storage.getString('email');
     if (userPassword && userEmail) {
-      // TODO
+      navigation.reset({
+        index: 0,
+        routes: [{name: 'MainTabNavigation'}],
+      });
     } else {
       navigation.reset({
         index: 0,

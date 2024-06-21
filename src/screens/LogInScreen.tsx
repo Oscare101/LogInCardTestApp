@@ -15,6 +15,9 @@ import ButtonBlock from '../components/ButtonBlock';
 import rules from '../constants/rules';
 import text from '../constants/text';
 import ErrorTitleBlock from '../components/ErrorTitleBlock';
+import {MMKV} from 'react-native-mmkv';
+
+export const storage = new MMKV();
 
 export default function LogInScreen({navigation}: any) {
   const systemTheme: ThemeColor['value'] = useColorScheme() ?? 'light';
@@ -30,8 +33,14 @@ export default function LogInScreen({navigation}: any) {
   function LogInFunc() {
     const emailCheck = rules.emailCheck.test(email);
     const passwordCheck = rules.passwordCheck.test(password);
+
     if (emailCheck && passwordCheck) {
-      // TODO
+      storage.set('email', email);
+      storage.set('password', password);
+      navigation.reset({
+        index: 0,
+        routes: [{name: 'MainTabNavigation'}],
+      });
     } else {
       setErrorEmail(!emailCheck ? text.emailError : '');
       setErrorPassword(!passwordCheck ? text.password : '');
